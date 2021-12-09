@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Services;
+namespace App\Http\Services\v1;
 
 class PostService
 {
-    public function getPosts(int $count, string $name)
+    public function getPosts()
     {
         return [
             0 => [

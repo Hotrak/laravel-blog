@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCurrencyTypesTable extends Migration
+class CreateUserPostResponsesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateCurrencyTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('currency_types', function (Blueprint $table) {
+        Schema::create('user_post_responses', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
+            $table->bigInteger('post_id');
+            $table->bigInteger('user_id');
+            $table->boolean('is_like');
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ class CreateCurrencyTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('currency_types');
+        Schema::dropIfExists('user_post_responses');
     }
 }
