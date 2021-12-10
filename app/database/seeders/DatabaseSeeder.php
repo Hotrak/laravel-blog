@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Database\Seeders\v1\CardOperationTypeSeeder;
 use Database\Seeders\v1\CardSeeder;
 use Database\Seeders\v1\CurrencyTypeSeeder;
 use Database\Seeders\v1\UserSeeder;
@@ -20,6 +21,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             CurrencyTypeSeeder::class,
             CardSeeder::class,
+            CardOperationTypeSeeder::class,
         ]);
         // \App\Models\User::factory(10)->create();
     }
