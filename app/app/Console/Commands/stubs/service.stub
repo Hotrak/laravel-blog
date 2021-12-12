@@ -1,0 +1,39 @@
+<?php
+
+namespace DummyNamespace;
+
+use App\Models\{modelPath};
+
+class DummyClass
+{
+    public function find($id) : {model}
+    {
+        return {model}::find($id);
+    }
+
+    public function getAll()
+    {
+       return {model}::all();
+    }
+
+    public function store(array $attributes) : {model}
+    {
+        $model = {model}::create($attributes);
+
+        return $model;
+    }
+
+    public function update({model} $model, array $attributes) : {model}
+    {
+        $model->update($attributes);
+
+        return $model;
+    }
+
+    public function delete({model} $model)
+    {
+        $model->delete();
+    }
+
+
+}
