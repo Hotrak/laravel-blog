@@ -23,6 +23,10 @@ class CardController extends Controller
         return CardResource::collection($this->service->getAll());
     }
 
+    public function show(Card $card){
+        return new CardResource($card);
+    }
+
     public function store(CardRequest $request)
     {
         return new CardResource($this->service->store($request->validated()));
