@@ -14,34 +14,68 @@ class CardOperationTypeSeeder extends Seeder
      */
     public function run()
     {
+        $types = [
+            (object) [
+                'name' => 'Транспорт',
+            ],
+            (object) [
+                'name' => 'Покушать',
+            ],
+            (object) [
+                'name' => 'Алеся',
+                'parentTypeName' => 'Покушать'
+            ],
+            (object) [
+                'name' => 'Доставка',
+                'parentTypeName' => 'Покушать'
+            ],
+            (object) [
+                'name' => 'Продукты',
+                'parentTypeName' => 'Покушать'
+            ],
+            (object) [
+                'name' => 'Ценные покупки',
+            ],
+        ];
 
-        CardOperationType::factory()
-            ->state([ 'name' => 'Транспорт'])
-            ->create();
+        foreach($types as $type){
+            $state = ['name' => $type->name];
 
-        CardOperationType::factory()
-            ->state([ 'name' => 'Магазин'])
-            ->create();
+            if(isset($type->parentTypeName))
+                $state['parent_type_id'] =  CardOperationType::where('name', '=', $type->parentTypeName)->first();
 
-        CardOperationType::factory()
-            ->state([ 'name' => 'Еда'])
-            ->hasParent(1, ['name' => 'Магазин'])
-            ->create();
+            CardOperationType::factory()
+                ->state($state)
+                ->create();
+        }
 
-        CardOperationType::factory()
-            ->state([ 'name' => 'Алеся'])
-            ->hasParent(1, ['name' => 'Еда'])
-            ->create();
+        // CardOperationType::factory()
+        //     ->state([ 'name' => 'Транспорт'])
+        //     ->create();
 
-        CardOperationType::factory()
-            ->state([ 'name' => 'Продукты'])
-            ->hasParent(1, ['name' => 'Еда'])
-            ->create();
+        // CardOperationType::factory()
+        //     ->state([ 'name' => 'Магазин'])
+        //     ->create();
 
-        CardOperationType::factory()
-            ->state([ 'name' => 'Доставка'])
-            ->hasParent(1, ['name' => 'Еда'])
-            ->create();
+
+
+        // CardOperationType::factory()
+        //     ->state(['name' => 'Еда',])
+        //     ->create();
+
+        // CardOperationType::factory()
+        //     ->state([
+        //         'name' => 'Доставка',
+        //         'parent_type_id' => CardOperationType::where('name', '=', 'Еда')->first(),
+        //     ])
+        //     ->create();
+        // CardOperationType::factory()
+        //     ->state([
+        //         'name' => 'Доставка',
+        //         'parent_type_id' => CardOperationType::where('name', '=', 'Еда')->first(),
+        //     ])
+        //     ->create();
+
 
     }
 }

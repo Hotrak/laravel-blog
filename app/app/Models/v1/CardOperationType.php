@@ -11,7 +11,7 @@ class CardOperationType extends Model
 
     protected $fillable = ['name'];
 
-    protected function parent(){
+    public function parent(){
         return $this->hasOne(CardOperationType::class, 'id', 'parent_type_id');
     }
 }
